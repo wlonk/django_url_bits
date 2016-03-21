@@ -6,7 +6,7 @@ To use Django URL Bits in a project:
 
 .. code-block:: python
 
-    from django.conf.urls import url
+    from django.conf.urls import url, include
     from django_url_bits import path as _
 
     from . import views
@@ -26,6 +26,10 @@ To use Django URL Bits in a project:
             _("shire/:house/"),
             views.ShireView.as_view(),
             name='shire',
+        ),
+        url(
+            _("fangorn/", namespace=True),
+            include("fangorn.urls"),
         ),
     )
 
@@ -48,13 +52,17 @@ So, of course, you can mix-and-match if you need:
             name='gondor',
         ),
         url(
-            r"mordor/(?P<orcs>\d+)/",
+            r"mordor/(?P<orcs>\d+)/$",
             views.MordorView.as_view(),
             name='mordor',
         ),
         url(
-            r"shire/(?P<house>[^/]+)/",
+            r"shire/(?P<house>[^/]+)/$",
             views.ShireView.as_view(),
             name='shire',
+        ),
+        url(
+            r"fangorn/",
+            include("fangorn.urls"),
         ),
     )
