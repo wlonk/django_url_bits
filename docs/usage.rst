@@ -38,7 +38,7 @@ regexier string.
 
 So, of course, you can mix-and-match if you need:
 
-..code-block:: python
+.. code-block:: python
 
     from django.conf.urls import url
     from django_url_bits import path as _
