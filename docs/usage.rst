@@ -52,17 +52,17 @@ So, of course, you can mix-and-match if you need:
             name='gondor',
         ),
         url(
-            r"mordor/(?P<orcs>\d+)/$",
+            r"^mordor/(?P<orcs>\d+)/$",
             views.MordorView.as_view(),
             name='mordor',
         ),
         url(
-            r"shire/(?P<house>[^/]+)/$",
+            r"^shire/(?P<house>[^/]+)/$",
             views.ShireView.as_view(),
             name='shire',
         ),
         url(
-            r"fangorn/",
+            r"^fangorn/",
             include("fangorn.urls"),
         ),
     )
